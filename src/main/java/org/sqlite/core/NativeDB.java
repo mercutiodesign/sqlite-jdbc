@@ -147,7 +147,12 @@ public final class NativeDB extends DB
         return utf8ByteArrayToString(libversion_utf8());
     }
 
-    native byte[] libversion_utf8();
+    public static String getLibraryVersion() throws Exception {
+        load();
+        return utf8ByteArrayToString(libversion_utf8());
+    }
+
+    static native byte[] libversion_utf8();
 
     /**
      * @see org.sqlite.core.DB#changes()

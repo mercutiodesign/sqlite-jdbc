@@ -637,7 +637,7 @@ JNIEXPORT jbyteArray JNICALL Java_org_sqlite_core_NativeDB_errmsg_1utf8(JNIEnv *
 }
 
 JNIEXPORT jbyteArray JNICALL Java_org_sqlite_core_NativeDB_libversion_1utf8(
-        JNIEnv *env, jobject this)
+        JNIEnv *env, jclass clazz)
 {
     const char* version = sqlite3_libversion();
     return utf8BytesToJavaByteArray(env, version, strlen(version));
