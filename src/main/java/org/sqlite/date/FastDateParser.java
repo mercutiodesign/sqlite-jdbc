@@ -660,7 +660,7 @@ public class FastDateParser implements DateParser, Serializable {
                 sb.setCharAt(sb.length()-1, ')');
                 throw new IllegalArgumentException(sb.toString());
             }
-            cal.set(field, iVal.intValue());
+            cal.set(field, iVal);
         }
     }
 

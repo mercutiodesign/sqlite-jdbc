@@ -187,7 +187,7 @@ public abstract class DB implements Codes
             while (i.hasNext()) {
                 Map.Entry<Long, CoreStatement> entry = i.next();
                 CoreStatement stmt = entry.getValue();
-                finalize(entry.getKey().longValue());
+                finalize(entry.getKey());
                 if (stmt != null) {
                     stmt.pointer = 0;
                 }
@@ -225,7 +225,7 @@ public abstract class DB implements Codes
             finalize(stmt);
         }
         stmt.pointer = prepare(stmt.sql);
-        stmts.put(new Long(stmt.pointer), stmt);
+        stmts.put(stmt.pointer, stmt);
     }
 
     /**
@@ -244,7 +244,7 @@ public abstract class DB implements Codes
             rc = finalize(stmt.pointer);
         }
         finally {
-            stmts.remove(new Long(stmt.pointer));
+            stmts.remove(stmt.pointer);
             stmt.pointer = 0;
         }
         return rc;
@@ -710,19 +710,19 @@ public abstract class DB implements Codes
             return bind_null(stmt, pos);
         }
         else if (v instanceof Integer) {
-            return bind_int(stmt, pos, ((Integer) v).intValue());
+            return bind_int(stmt, pos, (Integer) v);
         }
         else if (v instanceof Short) {
             return bind_int(stmt, pos, ((Short) v).intValue());
         }
         else if (v instanceof Long) {
-            return bind_long(stmt, pos, ((Long) v).longValue());
+            return bind_long(stmt, pos, (Long) v);
         }
         else if (v instanceof Float) {
             return bind_double(stmt, pos, ((Float) v).doubleValue());
         }
         else if (v instanceof Double) {
-            return bind_double(stmt, pos, ((Double) v).doubleValue());
+            return bind_double(stmt, pos, (Double) v);
         }
         else if (v instanceof String) {
             return bind_text(stmt, pos, (String) v);

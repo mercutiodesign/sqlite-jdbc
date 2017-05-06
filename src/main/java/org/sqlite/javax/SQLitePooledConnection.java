@@ -91,7 +91,7 @@ public class SQLitePooledConnection extends JDBC4PooledConnection implements Poo
                         }
                         else if ("isClosed".equals(name)) {
                             if (!isClosed)
-                                isClosed = ((Boolean)method.invoke(physicalConn, args)).booleanValue();
+                                isClosed = (Boolean) method.invoke(physicalConn, args);
 
                             return isClosed;
                         }
